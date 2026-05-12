@@ -314,7 +314,8 @@ if __name__ == "__main__":
     print("  المرشد الذكي — OpenRouter Edition")
     print("=" * 50)
     print(f"  Model  : {MODEL_NAME}")
-    print(f"  Server : http://localhost:5000")
+    port = int(os.environ.get("PORT", 5000))
+    print(f"  Server : http://localhost:{port}")
     print("=" * 50)
 
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=False, host="0.0.0.0", port=port)
