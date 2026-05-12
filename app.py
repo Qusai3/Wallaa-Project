@@ -12,7 +12,7 @@ load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 MODEL_NAME = "openai/gpt-3.5-turbo"
-DB_PATH    = "murshid.db"
+DB_PATH = os.path.join(os.getcwd(), "murshid.db")
 
 app = Flask(__name__, static_folder='frontend', static_url_path='')
 CORS(app)
