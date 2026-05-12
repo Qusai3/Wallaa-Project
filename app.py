@@ -17,6 +17,7 @@ DB_PATH = os.path.join(os.getcwd(), "murshid.db")
 app = Flask(__name__, static_folder='frontend', static_url_path='')
 CORS(app)
 
+
 # ─── SYSTEM PROMPT ──────────────────────────────────────────────
 SYSTEM_PROMPT = """أنت "المرشد الذكي"، مساعد ذكي متخصص في مساعدة طلاب تخصص تكنولوجيا التعليم في جامعة الشرق الأوسط (MEU).
 
@@ -142,6 +143,8 @@ def ensure_session(session_id, user_name="طالب جديد"):
     conn.commit()
     conn.close()
 
+with app.app_context():
+    init_db()
 # ─── ROUTES ─────────────────────────────────────────────────────
 
 @app.route("/")
