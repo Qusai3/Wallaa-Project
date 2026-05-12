@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المرشد الذكي — جولة حول الجامعة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #061540;
+      --blue-800: #0a2166;
+      --blue-700: #0d2d8a;
+      --blue-600: #1565c0;
+      --blue-400: #42a5f5;
+      --blue-200: #bbdefb;
+      --green-900: #0a2e10;
+      --green-800: #1b5e20;
+      --green-600: #2e7d32;
+      --green-400: #43a047;
+      --green-200: #c8e6c9;
+      --gold: #ffd54f;
+      --gold-deep: #f9a825;
+      --white: #ffffff;
+      --off-white: #f0f6ff;
+      --text-dark: #0d1f3c;
+      --text-muted: #4a6080;
+      --teal: #0e7c6e;
+      --teal-light: #e6f6f4;
+      --font: 'Tajawal', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--off-white);
+      color: var(--text-dark);
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-800) 45%, var(--green-900) 100%);
+      height: 68px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 4px 32px rgba(6, 21, 64, 0.45);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 14px rgba(249, 168, 37, 0.4);
+    }
+
+    .nav-title {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .nav-sub {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 11px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.68);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font);
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+
+    .nav-link.active {
+      background: rgba(255, 213, 79, 0.18);
+      color: var(--gold);
+    }
+
+    /* ========== HERO STRIP ========== */
+    .hero-strip {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 35%, #0a5a50 70%, var(--green-900) 100%);
+      background-size: 300% 300%;
+      animation: heroGrad 16s ease infinite;
+      padding: 70px 40px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes heroGrad {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .hero-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(70px);
+    }
+
+    .ho1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(14, 124, 110, 0.18);
+      top: -120px;
+      right: -120px;
+      animation: orbDrift 14s ease-in-out infinite;
+    }
+
+    .ho2 {
+      width: 320px;
+      height: 320px;
+      background: rgba(66, 165, 245, 0.12);
+      bottom: -80px;
+      left: -80px;
+      animation: orbDrift 18s ease-in-out infinite reverse;
+    }
+
+    @keyframes orbDrift {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 124, 110, 0.2);
+      border: 1px solid rgba(14, 124, 110, 0.5);
+      color: #4dd0c4;
+      border-radius: 50px;
+      padding: 7px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 2;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.3);
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero-title .accent {
+      background: linear-gradient(90deg, #4dd0c4, #a7f3d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      position: relative;
+      z-index: 2;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.85;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== WAVE ========== */
+    .wave-divider {
+      margin-top: -2px;
+      line-height: 0;
+      background: var(--off-white);
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 36px 80px;
+    }
+
+    /* ========== INFO CARDS ========== */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 20px rgba(13, 45, 138, 0.06);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, border-color 0.3s;
+      animation: cardIn 0.6s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-card:nth-child(1) {
+      animation-delay: 0.1s;
+      --ic-color: var(--teal);
+    }
+
+    .info-card:nth-child(2) {
+      animation-delay: 0.2s;
+      --ic-color: var(--blue-600);
+    }
+
+    .info-card:nth-child(3) {
+      animation-delay: 0.3s;
+      --ic-color: var(--gold-deep);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 0 0 0 150px;
+      background: var(--ic-color);
+      opacity: 0.06;
+      transition: opacity 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+      border-color: var(--ic-color);
+    }
+
+    .info-card:hover::before {
+      opacity: 0.12;
+    }
+
+    .ic-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: block;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .info-card:hover .ic-icon {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .ic-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+
+    .ic-text {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+
+    /* ========== SECTION TITLE ========== */
+    .section-title {
+      text-align: center;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .section-title h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--blue-900);
+      margin-bottom: 8px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 0;
+      left: 0;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--blue-400));
+    }
+
+    .section-title p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* ========== VIDEO SECTION ========== */
+    .video-wrapper {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 12px;
+      box-shadow: 0 12px 48px rgba(13, 45, 138, 0.12);
+      border: 2px solid rgba(14, 124, 110, 0.15);
+      animation: cardIn 0.7s 0.4s ease both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(14, 124, 110, 0.04), rgba(21, 101, 192, 0.04));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      max-height: 560px;
+      object-fit: cover;
+      background: #000;
+    }
+
+    /* ========== FACTS BAND ========== */
+    .facts-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+      animation: cardIn 0.7s 0.5s ease both;
+    }
+
+    .fact-item {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(13, 45, 138, 0.06);
+      border-bottom: 4px solid var(--teal);
+      transition: transform 0.3s;
+    }
+
+    .fact-item:nth-child(2) {
+      border-bottom-color: var(--blue-600);
+    }
+
+    .fact-item:nth-child(3) {
+      border-bottom-color: var(--gold-deep);
+    }
+
+    .fact-item:nth-child(4) {
+      border-bottom-color: var(--green-600);
+    }
+
+    .fact-item:hover {
+      transform: translateY(-6px);
+    }
+
+    .fact-num {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--blue-900);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .fact-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: linear-gradient(90deg, var(--blue-900), #0a2e14);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 12px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .facts-band {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-title {
+        font-size: 34px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .facts-band {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-strip {
+        padding: 50px 20px 70px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .content {
+        padding: 40px 18px 60px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <a class="nav-brand" href="main_page.html">
+      <div class="nav-logo">🤖</div>
+      <div>
+        <div class="nav-title">المرشد الذكي</div>
+        <div class="nav-sub">جامعة الشرق الأوسط</div>
+      </div>
+    </a>
+
+    <div class="nav-links">
+      <a href="main_page.html" class="nav-link">الرئيسية</a>
+      <a href="chat.html" class="nav-link">المرشد الذكي</a>
+      <a href="tour.html" class="nav-link active">جولة الجامعة</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-strip">
+    <div class="hero-orb ho1"></div>
+    <div class="hero-orb ho2"></div>
+
+    <div class="hero-badge">🏛️ جولة تفاعلية — جامعة الشرق الأوسط</div>
+
+    <h1 class="hero-title">
+      اكتشف <span class="accent">حرم جامعتك</span><br>
+      قبل أن تبدأ رحلتك الأكاديمية
+    </h1>
+
+    <p class="hero-sub">
+      نقدم لك جولة مرئية شاملة داخل جامعة الشرق الأوسط وتخصص تكنولوجيا التعليم —
+      تعرّف على المرافق والأقسام الأكاديمية وكل ما ستحتاجه كطالب جديد في مكان واحد.
+    </p>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#f0f6ff" />
+    </svg>
+  </div>
+
+  <!-- ========== CONTENT ========== -->
+  <div class="content">
+
+    <!-- INFO CARDS -->
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="ic-icon">🏛️</span>
+        <div class="ic-title">عن الجامعة</div>
+        <div class="ic-text">
+          جامعة الشرق الأوسط (MEU) تأسست عام 2005 في عمّان، الأردن، وتُعدّ من أبرز الجامعات الخاصة في المنطقة العربية،
+          وتضم أكثر من 15,000 طالب من مختلف التخصصات.
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="ic-icon">💻</span>
+        <div class="ic-title">تكنولوجيا التعليم</div>
+        <div class="ic-text">
+          التخصص يجمع بين علوم التعليم والتقنية الحديثة، ويُعدّ الأول من نوعه في الأردن.
+          يتضمن 132 ساعة معتمدة على مدى أربع سنوات دراسية كاملة.
+        </div>
+      </div>
+
+      <div class="info-card">
+        <span class="ic-icon">🎓</span>
+        <div class="ic-title">فرص استثنائية</div>
+        <div class="ic-text">
+          يوفر التخصص فرصاً متميزة في مجال التصميم التعليمي وإنتاج المحتوى الرقمي والتدريب، مع تدريب ميداني مُدمج في
+          السنة الرابعة بمدة 120 ساعة.
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO SECTION -->
+    <div class="section-title">
+      <h2>🎬 جولة مرئية داخل الجامعة</h2>
+      <p>شاهد الجولة التفاعلية لاكتشاف مرافق الجامعة والبيئة الأكاديمية بصرياً</p>
+    </div>
+
+    <div class="video-wrapper">
+      <video controls preload="metadata" poster="">
+        <source src="tour.mp4" type="video/mp4">
+        <p style="text-align:center; padding:40px; color:var(--text-muted);">
+          متصفحك لا يدعم تشغيل الفيديو. <a href="tour.mp4">اضغط هنا لتحميله</a>.
+        </p>
+      </video>
+    </div>
+
+    <!-- FACTS BAND -->
+    <div class="facts-band">
+      <div class="fact-item">
+        <div class="fact-num">2005</div>
+        <div class="fact-label">سنة تأسيس الجامعة</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-num">132</div>
+        <div class="fact-label">ساعة معتمدة في التخصص</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-num">120</div>
+        <div class="fact-label">ساعة تدريب ميداني</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-num">4+</div>
+        <div class="fact-label">مسارات مهنية بعد التخرج</div>
+      </div>
+    </div>
+
+  </div><!-- end .content -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <span class="footer-copy">🤖 المرشد الذكي &copy; 2024 — جامعة الشرق الأوسط</span>
+    <div class="footer-links">
+      <span class="footer-link">سياسة الخصوصية</span>
+      <span class="footer-link">الخطة الإرشادية</span>
+      <span class="footer-link">تواصل معنا</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المرشد الذكي — إدارة الأنظمة التعليمية الإلكترونية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-900:#061540;--blue-800:#0a2166;--blue-700:#0d2d8a;
+      --green-900:#0a2e10;--gold:#ffd54f;--gold-deep:#f9a825;
+      --white:#ffffff;--off-white:#f0f6ff;
+      --text-dark:#0d1f3c;--text-muted:#4a6080;
+      --accent:#065f46;--accent-light:#ecfdf5;
+      --font:'Tajawal',sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:var(--font);background:var(--off-white);color:var(--text-dark);direction:rtl;overflow-x:hidden;}
+
+    .navbar{background:linear-gradient(90deg,var(--blue-900) 0%,var(--blue-800) 45%,var(--green-900) 100%);height:68px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 4px 32px rgba(6,21,64,.45);}
+    .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+    .nav-logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-deep));display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 14px rgba(249,168,37,.4);}
+    .nav-title{color:var(--white);font-size:18px;font-weight:800;}
+    .nav-sub{color:rgba(255,255,255,.45);font-size:11px;}
+    .nav-links{display:flex;gap:4px;}
+    .nav-link{color:rgba(255,255,255,.68);padding:8px 14px;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:none;font-family:var(--font);text-decoration:none;transition:all .2s;white-space:nowrap;}
+    .nav-link:hover{background:rgba(255,255,255,.1);color:var(--white);}
+    .nav-link.active{background:rgba(255,213,79,.18);color:var(--gold);}
+
+    .hero-strip{background:linear-gradient(135deg,var(--blue-900) 0%,#064e3b 35%,#065f46 65%,#047857 100%);background-size:300% 300%;animation:heroGrad 16s ease infinite;padding:60px 40px 80px;text-align:center;position:relative;overflow:hidden;}
+    @keyframes heroGrad{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+    .hero-strip::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:52px 52px;}
+    .hero-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);}
+    .ho1{width:380px;height:380px;background:rgba(16,185,129,.22);top:-120px;right:-100px;animation:orbDrift 14s ease-in-out infinite;}
+    .ho2{width:280px;height:280px;background:rgba(6,95,70,.3);bottom:-80px;left:-80px;animation:orbDrift 18s ease-in-out infinite reverse;}
+    @keyframes orbDrift{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-20px) scale(1.05);}}
+    .back-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);border-radius:50px;padding:7px 18px;font-size:13px;font-weight:600;margin-bottom:20px;cursor:pointer;text-decoration:none;transition:background .2s;animation:fadeUp .5s ease both;}
+    .back-btn:hover{background:rgba(255,255,255,.18);color:var(--white);}
+    .hero-badge{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.5);color:#6ee7b7;border-radius:50px;padding:7px 22px;font-size:13px;font-weight:600;margin-bottom:20px;animation:fadeUp .6s .1s ease both;}
+    .hero-title{position:relative;z-index:2;font-size:40px;font-weight:900;color:var(--white);line-height:1.2;margin-bottom:10px;text-shadow:0 4px 28px rgba(0,0,0,.3);animation:fadeUp .7s .15s ease both;}
+    .hero-en{position:relative;z-index:2;font-size:16px;color:rgba(255,255,255,.5);animation:fadeUp .8s .2s ease both;font-weight:500;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+    .wave-divider{margin-top:-2px;line-height:0;background:var(--off-white);}
+    .wave-divider svg{display:block;width:100%;}
+
+    .page-content{max-width:1100px;margin:0 auto;padding:56px 36px 80px;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+
+    /* ANIMATED IMAGE */
+    .img-side{position:relative;display:flex;justify-content:center;align-items:center;}
+    .img-glow-ring{position:absolute;width:110%;height:110%;border-radius:28px;background:linear-gradient(135deg,rgba(16,185,129,.2),rgba(6,95,70,.12));filter:blur(28px);animation:ringPulse 4s ease-in-out infinite;}
+    @keyframes ringPulse{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+
+    /* Data flow lines behind image */
+    .data-lines{position:absolute;inset:-10px;border-radius:30px;overflow:hidden;pointer-events:none;z-index:1;}
+    .data-line{position:absolute;height:2px;background:linear-gradient(90deg,transparent,rgba(16,185,129,.5),transparent);animation:dataFlow 2.5s ease-in-out infinite;}
+    .dl1{width:60%;left:20%;top:20%;animation-delay:0s;}
+    .dl2{width:80%;left:10%;top:40%;animation-delay:.6s;}
+    .dl3{width:50%;left:25%;top:60%;animation-delay:1.2s;}
+    .dl4{width:70%;left:15%;top:80%;animation-delay:1.8s;}
+    @keyframes dataFlow{0%{opacity:0;transform:translateX(-40px);}40%{opacity:1;}100%{opacity:0;transform:translateX(40px);}}
+
+    .img-card{position:relative;z-index:2;border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(6,95,70,.22),0 4px 16px rgba(0,0,0,.1);border:2px solid rgba(16,185,129,.2);animation:imgFloat 5s ease-in-out infinite;}
+    @keyframes imgFloat{0%,100%{transform:translateY(0) rotate(0deg);}30%{transform:translateY(-11px) rotate(.35deg);}70%{transform:translateY(-5px) rotate(-.35deg);}}
+    .img-card img{width:100%;display:block;max-width:440px;}
+    .img-shimmer{position:absolute;inset:0;border-radius:24px;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);background-size:200% 100%;animation:shimmer 3.5s ease-in-out infinite;}
+    @keyframes shimmer{0%,100%{background-position:200% 0;}50%{background-position:-200% 0;}}
+
+    .sparkle{position:absolute;border-radius:50%;animation:sparklePop 2.5s ease-in-out infinite;}
+    .sp1{width:14px;height:14px;background:#10b981;top:-6px;right:-6px;animation-delay:0s;}
+    .sp2{width:10px;height:10px;background:#34d399;top:20px;left:-8px;animation-delay:.9s;}
+    .sp3{width:12px;height:12px;background:#6ee7b7;bottom:-5px;left:20px;animation-delay:1.6s;}
+    .sp4{width:8px;height:8px;background:#a7f3d0;bottom:16px;right:-7px;animation-delay:2.3s;}
+    @keyframes sparklePop{0%,100%{transform:scale(1);opacity:.8;}50%{transform:scale(1.7);opacity:1;}}
+
+    .img-float-badge{position:absolute;bottom:14px;right:-18px;z-index:5;background:var(--white);border-radius:16px;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(6,95,70,.18);border:1.5px solid rgba(16,185,129,.2);animation:badgeFloat 4.5s ease-in-out infinite;}
+    @keyframes badgeFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+    .badge-icon{font-size:22px;}
+    .badge-text{font-size:11.5px;font-weight:700;color:var(--text-dark);line-height:1.3;}
+    .badge-sub{font-size:10px;color:var(--text-muted);font-weight:500;}
+
+    /* TEXT */
+    .text-side{animation:fadeUp .7s .3s ease both;}
+    .career-tag{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);border-radius:50px;padding:6px 18px;font-size:12px;font-weight:700;margin-bottom:18px;}
+    .career-heading{font-size:30px;font-weight:900;color:var(--blue-900);line-height:1.25;margin-bottom:6px;}
+    .career-en-name{font-size:14px;color:var(--text-muted);font-weight:500;margin-bottom:24px;}
+    .info-row{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;padding:14px 18px;background:var(--white);border-radius:16px;box-shadow:0 3px 14px rgba(13,45,138,.06);border-right:4px solid var(--accent);transition:transform .25s,box-shadow .25s;}
+    .info-row:hover{transform:translateX(-4px);box-shadow:0 8px 28px rgba(6,95,70,.1);}
+    .info-row-icon{font-size:20px;flex-shrink:0;margin-top:1px;}
+    .info-row-label{font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:.3px;margin-bottom:4px;}
+    .info-row-value{font-size:14px;color:var(--text-dark);font-weight:600;line-height:1.6;}
+    .tasks-title{font-size:17px;font-weight:800;color:var(--blue-900);margin:22px 0 12px;display:flex;align-items:center;gap:8px;}
+    .task-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;padding:12px 16px;background:var(--white);border-radius:14px;box-shadow:0 2px 10px rgba(13,45,138,.05);transition:transform .25s;}
+    .task-item:hover{transform:translateX(-4px);}
+    .task-num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--white);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+    .task-text{font-size:13.5px;color:var(--text-dark);line-height:1.6;}
+    .tools-row{margin-top:20px;padding:16px 18px;background:linear-gradient(135deg,#ecfdf5,#d1fae5);border-radius:16px;border:1.5px solid rgba(16,185,129,.2);}
+    .tools-label{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+    .tools-chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .tool-chip{background:var(--white);border:1.5px solid rgba(16,185,129,.25);color:var(--accent);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(16,185,129,.1);}
+
+    .footer{background:linear-gradient(90deg,var(--blue-900),#0a2e14);padding:28px 40px;margin-top:40px;display:flex;align-items:center;justify-content:space-between;}
+    .footer-copy{color:rgba(255,255,255,.35);font-size:12px;}
+    .footer-links{display:flex;gap:20px;}
+    .footer-link{color:rgba(255,255,255,.35);font-size:12px;cursor:pointer;transition:color .2s;}
+    .footer-link:hover{color:rgba(255,255,255,.7);}
+
+    @media(max-width:860px){.page-content{grid-template-columns:1fr;gap:36px;}.img-side{order:1;}.text-side{order:2;}.hero-title{font-size:26px;}.nav-links{display:none;}.img-float-badge{right:8px;}}
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-brand" href="main_page.html">
+    <div class="nav-logo">🤖</div>
+    <div><div class="nav-title">المرشد الذكي</div><div class="nav-sub">جامعة الشرق الأوسط</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="main_page.html" class="nav-link">الرئيسية</a>
+    <a href="chat.html"      class="nav-link">المرشد الذكي</a>
+    <a href="tour.html"      class="nav-link">جولة الجامعة</a>
+    <a href="plan.html"      class="nav-link">دليل الخطة</a>
+    <a href="future.html"    class="nav-link">مستقبلك</a>
+    <a href="careers.html"   class="nav-link active">مسارات العمل</a>
+  </div>
+</nav>
+
+<section class="hero-strip">
+  <div class="hero-orb ho1"></div>
+  <div class="hero-orb ho2"></div>
+  <a class="back-btn" href="careers.html">← العودة للمسارات</a><br>
+  <div class="hero-badge">🖥️ مسار مهني</div>
+  <h1 class="hero-title">إدارة الأنظمة التعليمية الإلكترونية</h1>
+  <p class="hero-en">E-Learning Management</p>
+</section>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#f0f6ff"/>
+  </svg>
+</div>
+
+<div class="page-content">
+
+  <div class="img-side">
+    <div class="img-glow-ring"></div>
+    <div class="data-lines">
+      <div class="data-line dl1"></div>
+      <div class="data-line dl2"></div>
+      <div class="data-line dl3"></div>
+      <div class="data-line dl4"></div>
+    </div>
+    <div class="img-card">
+      <img src="career_elearning_management.png" alt="إدارة الأنظمة التعليمية الإلكترونية">
+      <div class="img-shimmer"></div>
+    </div>
+    <div class="sparkle sp1"></div>
+    <div class="sparkle sp2"></div>
+    <div class="sparkle sp3"></div>
+    <div class="sparkle sp4"></div>
+    <div class="img-float-badge">
+      <div class="badge-icon">📡</div>
+      <div>
+        <div class="badge-text">تعلم إلكتروني</div>
+        <div class="badge-sub">إدارة وتنظيم</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-side">
+    <div class="career-tag">🖥️ إدارة الأنظمة التعليمية الإلكترونية</div>
+    <h2 class="career-heading">E-Learning Management</h2>
+    <p class="career-en-name">رمز: جهاز كمبيوتر مع رسم بياني</p>
+
+    <div class="info-row">
+      <div class="info-row-icon">🎯</div>
+      <div class="info-row-body">
+        <div class="info-row-label">دورك في سوق العمل</div>
+        <div class="info-row-value">إدارة المنصات التعليمية الإلكترونية وضمان جودة التعليم عن بُعد</div>
+      </div>
+    </div>
+
+    <div class="tasks-title">✅ المهام الرئيسية</div>
+    <div class="task-item">
+      <div class="task-num">1</div>
+      <div class="task-text">إدارة وتنظيم الدورات التعليمية عبر الإنترنت</div>
+    </div>
+    <div class="task-item">
+      <div class="task-num">2</div>
+      <div class="task-text">استخدام منصات مثل Moodle، وEdmodo، وCanvas</div>
+    </div>
+    <div class="task-item">
+      <div class="task-num">3</div>
+      <div class="task-text">تحليل بيانات الأداء والتفاعل مع الطلاب لتحسين جودة التعلم</div>
+    </div>
+
+    <div class="tools-row">
+      <div class="tools-label">🛠️ الأدوات المستخدمة</div>
+      <div class="tools-chips">
+        <span class="tool-chip">Moodle</span>
+        <span class="tool-chip">Blackboard</span>
+        <span class="tool-chip">Canvas</span>
+        <span class="tool-chip">Edmodo</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <span class="footer-copy">🤖 المرشد الذكي &copy; 2024 — جامعة الشرق الأوسط</span>
+  <div class="footer-links">
+    <span class="footer-link">سياسة الخصوصية</span>
+    <span class="footer-link">الخطة الإرشادية</span>
+    <span class="footer-link">تواصل معنا</span>
+  </div>
+</footer>
+</body>
+</html>
