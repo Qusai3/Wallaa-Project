@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المرشد الذكي — فريق الإعداد</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #061540;
+      --blue-800: #0a2166;
+      --blue-700: #0d2d8a;
+      --blue-600: #1565c0;
+      --blue-400: #42a5f5;
+      --green-900: #0a2e10;
+      --green-800: #1b5e20;
+      --green-600: #2e7d32;
+      --gold: #ffd54f;
+      --gold-deep: #f9a825;
+      --white: #ffffff;
+      --off-white: #f0f6ff;
+      --text-dark: #0d1f3c;
+      --text-muted: #4a6080;
+      --teal: #0e7c6e;
+      --font: 'Tajawal', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--off-white);
+      color: var(--text-dark);
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-800) 45%, var(--green-900) 100%);
+      height: 68px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 4px 32px rgba(6, 21, 64, .45);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 14px rgba(249, 168, 37, .4);
+    }
+
+    .nav-title {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .nav-sub {
+      color: rgba(255, 255, 255, .45);
+      font-size: 11px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, .68);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font);
+      text-decoration: none;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, .1);
+      color: var(--white);
+    }
+
+    .nav-link.active {
+      background: rgba(255, 213, 79, .18);
+      color: var(--gold);
+    }
+
+    /* HERO */
+    .hero-strip {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 35%, #0a5a50 70%, var(--green-900) 100%);
+      background-size: 300% 300%;
+      animation: heroGrad 16s ease infinite;
+      padding: 70px 40px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes heroGrad {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .hero-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(70px);
+    }
+
+    .ho1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(14, 124, 110, .18);
+      top: -120px;
+      right: -120px;
+      animation: orbDrift 14s ease-in-out infinite;
+    }
+
+    .ho2 {
+      width: 320px;
+      height: 320px;
+      background: rgba(66, 165, 245, .12);
+      bottom: -80px;
+      left: -80px;
+      animation: orbDrift 18s ease-in-out infinite reverse;
+    }
+
+    @keyframes orbDrift {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 213, 79, .15);
+      border: 1px solid rgba(255, 213, 79, .4);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 7px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      animation: fadeUp .6s ease both;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 2;
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, .3);
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .hero-title .accent {
+      background: linear-gradient(90deg, var(--gold), #fffde7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      position: relative;
+      z-index: 2;
+      font-size: 16px;
+      color: rgba(255, 255, 255, .65);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.85;
+      animation: fadeUp .8s .2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .wave-divider {
+      margin-top: -2px;
+      line-height: 0;
+      background: var(--off-white);
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 36px 80px;
+    }
+
+    /* ── SUPERVISOR ── */
+    .sup-section-label {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .sup-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(255, 213, 79, .18), rgba(249, 168, 37, .12));
+      border: 1px solid rgba(255, 213, 79, .45);
+      color: var(--gold-deep);
+      border-radius: 50px;
+      padding: 7px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .supervisor-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 80px;
+    }
+
+    .supervisor-card {
+      background: var(--white);
+      border-radius: 28px;
+      padding: 0;
+      max-width: 680px;
+      width: 100%;
+      box-shadow: 0 16px 64px rgba(13, 45, 138, .13);
+      border: 2px solid rgba(255, 213, 79, .3);
+      position: relative;
+      overflow: hidden;
+      animation: cardIn .7s .1s ease both;
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s;
+      display: flex;
+    }
+
+    .supervisor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 80px rgba(13, 45, 138, .18);
+    }
+
+    .sup-top-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-deep), var(--gold));
+      background-size: 200% auto;
+      animation: stripMove 3s linear infinite;
+    }
+
+    @keyframes stripMove {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .sup-photo-wrap {
+      width: 220px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sup-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sup-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, .0) 60%, rgba(255, 255, 255, .15));
+    }
+
+    .sup-body {
+      padding: 32px 32px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .sup-crown {
+      font-size: 28px;
+      margin-bottom: 10px;
+      display: block;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .sup-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 213, 79, .12);
+      border: 1px solid rgba(255, 213, 79, .3);
+      color: var(--gold-deep);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .sup-name {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .sup-role {
+      font-size: 13px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .sup-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .sup-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--off-white);
+      border-radius: 11px;
+      padding: 9px 14px;
+    }
+
+    .sup-row-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .sup-row-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .sup-row-val {
+      font-size: 12.5px;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeUp .6s ease both;
+    }
+
+    .section-title-wrap h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--blue-900);
+      margin-bottom: 8px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title-wrap h2::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 0;
+      left: 0;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--blue-400));
+    }
+
+    /* ── TEAM GRID ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .member-card {
+      background: var(--white);
+      border-radius: 22px;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 28px rgba(13, 45, 138, .07);
+      transition: transform .32s cubic-bezier(.34, 1.56, .64, 1), border-color .25s, box-shadow .25s;
+      animation: cardIn .6s ease both;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .member-card:nth-child(1) {
+      animation-delay: .1s;
+      --mc: #1565c0;
+    }
+
+    .member-card:nth-child(2) {
+      animation-delay: .18s;
+      --mc: #0e7c6e;
+    }
+
+    .member-card:nth-child(3) {
+      animation-delay: .26s;
+      --mc: #6d28d9;
+    }
+
+    .member-card:nth-child(4) {
+      animation-delay: .34s;
+      --mc: #c2185b;
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--mc, #1565c0);
+      box-shadow: 0 20px 52px rgba(0, 0, 0, .12);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(28px) scale(.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Colored left accent bar */
+    .member-accent {
+      width: 6px;
+      background: var(--mc, #1565c0);
+      flex-shrink: 0;
+    }
+
+    /* Photo */
+    .member-photo {
+      width: 130px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform .4s ease;
+    }
+
+    .member-card:hover .member-photo img {
+      transform: scale(1.05);
+    }
+
+    /* Info */
+    .member-info {
+      padding: 22px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .member-name {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .member-major {
+      font-size: 11px;
+      color: var(--mc, #1565c0);
+      font-weight: 700;
+      background: rgba(0, 0, 0, .04);
+      border-radius: 20px;
+      padding: 3px 10px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .member-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .member-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--off-white);
+      border-radius: 9px;
+      padding: 7px 10px;
+    }
+
+    .member-row-icon {
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .member-row-text {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: linear-gradient(90deg, var(--blue-900), #0a2e14);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, .35);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, .35);
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .2s;
+    }
+
+    .footer-link:hover {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    @media(max-width:900px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 34px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .supervisor-card {
+        flex-direction: column;
+      }
+
+      .sup-photo-wrap {
+        width: 100%;
+        height: 220px;
+      }
+    }
+
+    @media(max-width:560px) {
+      .hero-strip {
+        padding: 50px 20px 70px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .content {
+        padding: 40px 18px 60px;
+      }
+
+      .member-card {
+        flex-direction: column;
+      }
+
+      .member-photo {
+        width: 100%;
+        height: 160px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a class="nav-brand" href="main_page.html">
+      <div class="nav-logo">🤖</div>
+      <div>
+        <div class="nav-title">المرشد الذكي</div>
+        <div class="nav-sub">جامعة الشرق الأوسط</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="main_page.html" class="nav-link">الرئيسية</a>
+      <a href="chat.html" class="nav-link">المرشد الذكي</a>
+      <a href="tour.html" class="nav-link">جولة الجامعة</a>
+      <a href="plan.html" class="nav-link">دليل الخطة</a>
+      <a href="future.html" class="nav-link">مستقبلك</a>
+      <a href="careers.html" class="nav-link">مسارات العمل</a>
+      <a href="team.html" class="nav-link active">✨ فريق الإعداد</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-strip">
+    <div class="hero-orb ho1"></div>
+    <div class="hero-orb ho2"></div>
+    <div class="hero-badge">👩‍💻 فريق المرشد الذكي</div>
+    <h1 class="hero-title">تعرّف على <span class="accent">فريق الإعداد</span></h1>
+    <p class="hero-sub">الفريق المبدع الذي أعدّ مشروع المرشد الذكي — طالبات تكنولوجيا التعليم بجامعة الشرق الأوسط</p>
+  </section>
+
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#f0f6ff" />
+    </svg>
+  </div>
+
+  <div class="content">
+
+    <!-- ── SUPERVISOR ── -->
+    <div class="sup-section-label">
+      <span class="sup-pill">⭐ الدكتورة المشرفة على المشروع</span>
+    </div>
+
+    <div class="supervisor-wrap">
+      <div class="supervisor-card">
+        <div class="sup-top-bar"></div>
+
+        <div class="sup-photo-wrap">
+          <img src="team5.jpeg" alt="د. صباح النوايسة">
+        </div>
+
+        <div class="sup-body">
+          <span class="sup-crown">👑</span>
+          <div class="sup-badge">🎓 مشرفة المشروع</div>
+          <div class="sup-name">د. صباح النوايسة</div>
+          <div class="sup-role">أستاذة تكنولوجيا التعليم — جامعة الشرق الأوسط</div>
+          <div class="sup-rows">
+            <div class="sup-row">
+              <span class="sup-row-icon">📧</span>
+              <div>
+                <div class="sup-row-label">البريد الإلكتروني</div>
+                <div class="sup-row-val">snawaisseh@meu.edu.jo</div>
+              </div>
+            </div>
+            <div class="sup-row">
+              <span class="sup-row-icon">🏛️</span>
+              <div>
+                <div class="sup-row-label">التخصص</div>
+                <div class="sup-row-val">تكنولوجيا التعليم</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TEAM MEMBERS ── -->
+    <div class="section-title-wrap">
+      <h2>👩‍🎓 أعضاء فريق الإعداد</h2>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- 1: ولاء -->
+      <div class="member-card">
+        <div class="member-accent"></div>
+        <div class="member-photo">
+          <img src="team1.jpeg" alt="ولاء نوف النقزوز">
+        </div>
+        <div class="member-info">
+          <div>
+            <div class="member-name">ولاء نوف النقزوز</div>
+            <div class="member-major">تكنولوجيا التعليم</div>
+          </div>
+          <div class="member-rows">
+            <div class="member-row">
+              <span class="member-row-icon">📧</span>
+              <span class="member-row-text">walaanawaf12@gmail.com</span>
+            </div>
+            <div class="member-row">
+              <span class="member-row-icon">📱</span>
+              <span class="member-row-text">0776109143</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2: دينا -->
+      <div class="member-card">
+        <div class="member-accent"></div>
+        <div class="member-photo">
+          <img src="team2.jpeg" alt="دينا محمد حمدان">
+        </div>
+        <div class="member-info">
+          <div>
+            <div class="member-name">دينا محمد حمدان</div>
+            <div class="member-major">تكنولوجيا التعليم</div>
+          </div>
+          <div class="member-rows">
+            <div class="member-row">
+              <span class="member-row-icon">📧</span>
+              <span class="member-row-text">hdeena242@gmail.com</span>
+            </div>
+            <div class="member-row">
+              <span class="member-row-icon">📱</span>
+              <span class="member-row-text">0795819425</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3: دانا -->
+      <div class="member-card">
+        <div class="member-accent"></div>
+        <div class="member-photo">
+          <img src="team3.jpeg" alt="دانا محمد حمدان">
+        </div>
+        <div class="member-info">
+          <div>
+            <div class="member-name">دانا محمد حمدان</div>
+            <div class="member-major">تكنولوجيا التعليم</div>
+          </div>
+          <div class="member-rows">
+            <div class="member-row">
+              <span class="member-row-icon">📱</span>
+              <span class="member-row-text">0788499584</span>
+            </div>
+            <div class="member-row">
+              <span class="member-row-icon">📧</span>
+              <span class="member-row-text">dhamdan510@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4: نوف -->
+      <div class="member-card">
+        <div class="member-accent"></div>
+        <div class="member-photo">
+          <img src="team4.jpeg" alt="نوف عمر عواد">
+        </div>
+        <div class="member-info">
+          <div>
+            <div class="member-name">نوف عمر عواد</div>
+            <div class="member-major">تكنولوجيا التعليم</div>
+          </div>
+          <div class="member-rows">
+            <div class="member-row">
+              <span class="member-row-icon">📱</span>
+              <span class="member-row-text">0795474028</span>
+            </div>
+            <div class="member-row">
+              <span class="member-row-icon">📧</span>
+              <span class="member-row-text">noufomar829@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-copy">🤖 المرشد الذكي &copy; 2024 — جامعة الشرق الأوسط</span>
+    <div class="footer-links">
+      <span class="footer-link">سياسة الخصوصية</span>
+      <span class="footer-link">الخطة الإرشادية</span>
+      <span class="footer-link">تواصل معنا</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>

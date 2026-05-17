@@ -387,12 +387,22 @@
     </div>
 
     <div class="form-group">
-      <label class="form-label" for="birthDate">تاريخ الميلاد <span>*</span></label>
+      <label class="form-label" for="password">كلمة السر <span>*</span></label>
       <div class="input-wrapper">
-        <input class="form-input" id="birthDate" type="date" autocomplete="bday">
-        <span class="input-icon">📅</span>
+        <input class="form-input" id="password" type="password" placeholder="••••••••" autocomplete="new-password">
+        <span class="input-icon" onclick="togglePwd('password')" style="cursor:pointer;pointer-events:all;">👁️</span>
       </div>
-      <p class="field-error" id="err-birth">يرجى إدخال تاريخ الميلاد</p>
+      <p class="field-hint">6 أحرف على الأقل</p>
+      <p class="field-error" id="err-pass">كلمة السر يجب أن تكون 6 أحرف على الأقل</p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="passwordConfirm">تأكيد كلمة السر <span>*</span></label>
+      <div class="input-wrapper">
+        <input class="form-input" id="passwordConfirm" type="password" placeholder="••••••••" autocomplete="new-password">
+        <span class="input-icon" onclick="togglePwd('passwordConfirm')" style="cursor:pointer;pointer-events:all;">👁️</span>
+      </div>
+      <p class="field-error" id="err-pass2">كلمتا السر غير متطابقتين</p>
     </div>
 
     <div class="btn-row">
@@ -449,7 +459,7 @@
     <p class="success-title">تم إنشاء حسابك بنجاح!</p>
     <p class="success-sub">
       مرحباً <span class="success-name" id="successName"></span>،<br>
-      يمكنك الآن تسجيل الدخول باستخدام رقمك الجامعي وتاريخ ميلادك.
+      يمكنك الآن تسجيل الدخول باستخدام رقمك الجامعي وكلمة السر.
     </p>
     <button class="btn-primary" onclick="window.location.href='log_in.html'">
       🔐 &nbsp; تسجيل الدخول الآن
@@ -500,12 +510,14 @@ function validateStep(step) {
   if (step === 1) {
     const name  = document.getElementById('fullName').value.trim();
     const sid   = document.getElementById('studentId').value.trim();
-    const birth = document.getElementById('birthDate').value;
+    const pass  = document.getElementById('password').value;
+    const pass2 = document.getElementById('passwordConfirm').value;
 
     toggleErr('err-name',  !name,                          'fullName');
     toggleErr('err-sid',   !/^\d{7}$/.test(sid),           'studentId');
-    toggleErr('err-birth', !birth,                          'birthDate');
-    ok = !!(name && /^\d{7}$/.test(sid) && birth);
+    toggleErr('err-pass',  pass.length < 6,                'password');
+    toggleErr('err-pass2', pass !== pass2,                 'passwordConfirm');
+    ok = !!(name && /^\d{7}$/.test(sid) && pass.length >= 6 && pass === pass2);
   }
 
   if (step === 2) {
@@ -530,7 +542,7 @@ function buildReview() {
   const fields = [
     { label: 'الاسم الكامل',                icon: '👤', val: document.getElementById('fullName').value.trim() },
     { label: 'الرقم الجامعي',               icon: '🪪', val: document.getElementById('studentId').value.trim() },
-    { label: 'تاريخ الميلاد',               icon: '📅', val: document.getElementById('birthDate').value },
+    { label: 'كلمة السر',                   icon: '🔒', val: '••••••••' },
     { label: 'البريد الإلكتروني الجامعي',   icon: '📧', val: document.getElementById('uniEmail').value.trim() },
     { label: 'رقم الهاتف',                  icon: '📱', val: document.getElementById('phone').value.trim() },
   ];
@@ -553,7 +565,7 @@ async function submitRegister() {
   const payload = {
     full_name:        document.getElementById('fullName').value.trim(),
     student_id:       document.getElementById('studentId').value.trim(),
-    birth_date:       document.getElementById('birthDate').value,
+    password:         document.getElementById('password').value,
     university_email: document.getElementById('uniEmail').value.trim(),
     phone:            document.getElementById('phone').value.trim(),
   };
@@ -602,6 +614,12 @@ function clearAlert() {
 document.getElementById('studentId').addEventListener('input', function () {
   this.value = this.value.replace(/\D/g, '').slice(0, 7);
 });
+
+// Toggle password visibility
+function togglePwd(id) {
+  const input = document.getElementById(id);
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
 </script>
 </body>
 </html>

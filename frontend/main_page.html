@@ -1,752 +1,1206 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المرشد الذكي — الرئيسية</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --blue-900: #061540;
-    --blue-800: #0a2166;
-    --blue-700: #0d2d8a;
-    --blue-600: #1565c0;
-    --blue-400: #42a5f5;
-    --blue-200: #bbdefb;
-    --green-900: #0a2e10;
-    --green-800: #1b5e20;
-    --green-600: #2e7d32;
-    --green-400: #43a047;
-    --green-200: #c8e6c9;
-    --gold:      #ffd54f;
-    --gold-deep: #f9a825;
-    --white:     #ffffff;
-    --off-white: #f0f6ff;
-    --text-dark: #0d1f3c;
-    --text-muted:#4a6080;
-    --font: 'Tajawal', sans-serif;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المرشد الذكي — الرئيسية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --blue-900: #061540;
+      --blue-800: #0a2166;
+      --blue-700: #0d2d8a;
+      --blue-600: #1565c0;
+      --blue-400: #42a5f5;
+      --blue-200: #bbdefb;
+      --green-900: #0a2e10;
+      --green-800: #1b5e20;
+      --green-600: #2e7d32;
+      --green-400: #43a047;
+      --green-200: #c8e6c9;
+      --gold: #ffd54f;
+      --gold-deep: #f9a825;
+      --white: #ffffff;
+      --off-white: #f0f6ff;
+      --text-dark: #0d1f3c;
+      --text-muted: #4a6080;
+      --font: 'Tajawal', sans-serif;
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: var(--font);
-    background: var(--off-white);
-    color: var(--text-dark);
-    direction: rtl;
-    overflow-x: hidden;
-  }
+    body {
+      font-family: var(--font);
+      background: var(--off-white);
+      color: var(--text-dark);
+      direction: rtl;
+      overflow-x: hidden;
+    }
 
-  /* ========== NAVBAR ========== */
-  .navbar {
-    background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-800) 45%, var(--green-900) 100%);
-    height: 68px;
-    padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 200;
-    box-shadow: 0 4px 32px rgba(6,21,64,0.45);
-  }
-  .nav-brand {
-    display: flex; align-items: center; gap: 12px; cursor: pointer;
-    text-decoration: none;
-  }
-  .nav-logo {
-    width: 44px; height: 44px; border-radius: 12px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    box-shadow: 0 4px 14px rgba(249,168,37,0.4);
-  }
-  .nav-title { color: var(--white); font-size: 18px; font-weight: 800; }
-  .nav-sub   { color: rgba(255,255,255,0.45); font-size: 11px; }
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background: linear-gradient(90deg, var(--blue-900) 0%, var(--blue-800) 45%, var(--green-900) 100%);
+      height: 68px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 4px 32px rgba(6, 21, 64, 0.45);
+    }
 
-  .nav-links { display: flex; gap: 4px; }
-  .nav-link {
-    color: rgba(255,255,255,0.68);
-    padding: 8px 14px; border-radius: 10px;
-    font-size: 13px; font-weight: 500;
-    cursor: pointer; border: none; background: none;
-    font-family: var(--font);
-    transition: all 0.2s; white-space: nowrap;
-  }
-  .nav-link:hover { background: rgba(255,255,255,0.1); color: var(--white); }
-  .nav-link.active { background: rgba(255,213,79,0.18); color: var(--gold); }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
 
-  .nav-user { display: flex; align-items: center; gap: 10px; }
-  .user-avatar {
-    width: 38px; height: 38px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-400), var(--blue-400));
-    display: flex; align-items: center; justify-content: center;
-    color: var(--white); font-size: 14px; font-weight: 700;
-    border: 2px solid rgba(255,255,255,0.25);
-    cursor: pointer;
-  }
-  .user-name { color: rgba(255,255,255,0.78); font-size: 13px; font-weight: 500; }
+    .nav-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 14px rgba(249, 168, 37, 0.4);
+    }
 
-  /* ========== HERO ========== */
-  .hero {
-    background: linear-gradient(
-      135deg,
-      var(--blue-900) 0%,
-      var(--blue-700) 30%,
-      #104f80 55%,
-      var(--green-800) 80%,
-      var(--green-900) 100%
-    );
-    background-size: 300% 300%;
-    animation: heroGrad 16s ease infinite;
-    padding: 88px 40px 120px;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  @keyframes heroGrad {
-    0%,100%{ background-position: 0% 50%; }
-    50%    { background-position: 100% 50%; }
-  }
+    .nav-title {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 800;
+    }
 
-  /* hero grid texture */
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 52px 52px;
-  }
+    .nav-sub {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 11px;
+    }
 
-  /* floating orbs inside hero */
-  .hero-orb {
-    position: absolute; border-radius: 50%; pointer-events: none;
-    filter: blur(70px);
-  }
-  .ho1 { width:450px;height:450px; background:rgba(66,165,245,0.12);
-         top:-140px;right:-140px; animation: orbDrift 14s ease-in-out infinite; }
-  .ho2 { width:350px;height:350px; background:rgba(67,160,71,0.12);
-         bottom:-100px;left:-100px; animation: orbDrift 18s ease-in-out infinite reverse; }
-  .ho3 { width:180px;height:180px; background:rgba(255,213,79,0.1);
-         top:30%;left:15%; animation: orbDrift 10s ease-in-out infinite; }
-  @keyframes orbDrift {
-    0%,100%{ transform: translateY(0) scale(1); }
-    50%    { transform: translateY(-20px) scale(1.05); }
-  }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
 
-  .hero-badge {
-    position: relative; z-index: 2;
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,213,79,0.13);
-    border: 1px solid rgba(255,213,79,0.36);
-    color: var(--gold); border-radius: 50px;
-    padding: 7px 22px; font-size: 13px; font-weight: 600;
-    margin-bottom: 28px;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-title {
-    position: relative; z-index: 2;
-    font-size: 58px; font-weight: 900; color: var(--white);
-    line-height: 1.12; margin-bottom: 18px;
-    text-shadow: 0 4px 28px rgba(0,0,0,0.3);
-    animation: fadeUp 0.7s 0.1s ease both;
-  }
-  .hero-title .shine {
-    background: linear-gradient(90deg, var(--gold), #fffde7, var(--gold));
-    background-size: 200% auto;
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shine 4s linear infinite, textPop 0.8s 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
-    display: inline-block;
-  }
-  @keyframes shine { to { background-position: -200% center; } }
+    .nav-link {
+      color: rgba(255, 255, 255, 0.68);
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: var(--font);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
 
-  /* letter-by-letter wave float */
-  .shine .letter {
-    display: inline-block;
-    color: #ffffff;
-    -webkit-text-fill-color: #ffffff;
-    animation: letterWave 0.6s ease both, letterFloat 3s ease-in-out infinite;
-    animation-duration: 0.6s, 3s;
-    text-shadow:
-      0 0 30px rgba(255,213,79,0.9),
-      0 0 60px rgba(255,213,79,0.5),
-      0 2px 8px rgba(0,0,0,0.4);
-  }
-  @keyframes letterWave {
-    from { opacity:0; transform: translateY(32px) scale(0.6); }
-    to   { opacity:1; transform: translateY(0)    scale(1); }
-  }
-  @keyframes letterFloat {
-    0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-7px); }
-  }
-  @keyframes textPop {
-    from { opacity:0; transform: scale(0.85); }
-    to   { opacity:1; transform: scale(1); }
-  }
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
 
-  .hero-sub {
-    position: relative; z-index: 2;
-    font-size: 18px; color: rgba(255,255,255,0.68);
-    max-width: 600px; margin: 0 auto 0;
-    line-height: 1.8;
-    animation: fadeUp 0.8s 0.2s ease both;
-  }
+    .nav-link.active {
+      background: rgba(255, 213, 79, 0.18);
+      color: var(--gold);
+    }
 
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(24px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
+    .nav-link-team {
+      background: linear-gradient(135deg, rgba(255, 213, 79, 0.2), rgba(66, 165, 245, 0.2));
+      border: 1px solid rgba(255, 213, 79, 0.35);
+      color: var(--gold) !important;
+      font-weight: 700 !important;
+    }
 
-  /* ========== WAVE DIVIDER ========== */
-  .wave-divider {
-    margin-top: -2px; line-height: 0;
-    background: var(--off-white);
-  }
-  .wave-divider svg { display: block; width: 100%; }
+    .nav-link-team:hover {
+      background: linear-gradient(135deg, rgba(255, 213, 79, 0.35), rgba(66, 165, 245, 0.35)) !important;
+      color: var(--white) !important;
+    }
 
-  /* ========== SECTION ========== */
-  .section {
-    max-width: 1180px; margin: 0 auto;
-    padding: 64px 36px 80px;
-  }
-  .section-head {
-    text-align: center; margin-bottom: 52px;
-    animation: fadeUp 0.6s ease both;
-  }
-  .section-head h2 {
-    font-size: 30px; font-weight: 800;
-    color: var(--blue-900); margin-bottom: 10px;
-  }
-  .section-head p { font-size: 16px; color: var(--text-muted); }
+    .nav-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-  /* ========== CARDS GRID (5 cards) ========== */
-  /* Top row: 3 cards | Bottom row: 2 cards centered */
-  .cards-row-top {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-  .cards-row-bottom {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    max-width: 792px; /* matches 2 of the 3 columns above */
-    margin: 0 auto;
-  }
+    .user-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-400), var(--blue-400));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+    }
 
-  /* ========== FEATURE CARD ========== */
-  .fcard {
-    background: var(--white);
-    border-radius: 22px;
-    padding: 36px 30px 52px;
-    cursor: pointer;
-    position: relative; overflow: hidden;
-    border: 2px solid transparent;
-    box-shadow: 0 6px 28px rgba(13,45,138,0.07);
-    transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
-                border-color 0.25s,
-                box-shadow 0.25s;
-    animation: cardIn 0.6s ease both;
-  }
-  .fcard:nth-child(1){ animation-delay:.10s }
-  .fcard:nth-child(2){ animation-delay:.18s }
-  .fcard:nth-child(3){ animation-delay:.26s }
-  @keyframes cardIn {
-    from { opacity:0; transform:translateY(32px) scale(0.97); }
-    to   { opacity:1; transform:translateY(0)    scale(1); }
-  }
-  .cards-row-bottom .fcard:nth-child(1){ animation-delay:.34s }
-  .cards-row-bottom .fcard:nth-child(2){ animation-delay:.42s }
+    .user-name {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 13px;
+      font-weight: 500;
+    }
 
-  /* Glowing corner blob */
-  .fcard::before {
-    content: '';
-    position: absolute; top: 0; right: 0;
-    width: 190px; height: 190px;
-    border-radius: 0 0 0 190px;
-    background: var(--fc-color, #1565c0);
-    opacity: .055;
-    transition: opacity .3s, transform .3s;
-  }
-  .fcard:hover { transform: translateY(-10px); }
-  .fcard:hover::before { opacity: .12; transform: scale(1.1); }
+    /* ========== HERO ========== */
+    .hero {
+      background: linear-gradient(135deg,
+          var(--blue-900) 0%,
+          var(--blue-700) 30%,
+          #104f80 55%,
+          var(--green-800) 80%,
+          var(--green-900) 100%);
+      background-size: 300% 300%;
+      animation: heroGrad 16s ease infinite;
+      padding: 88px 40px 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* border glow on hover per color */
-  .fc-gold:hover  { border-color:#f0a500; box-shadow: 0 20px 52px rgba(240,165,0,.18); }
-  .fc-teal:hover  { border-color:#0e7c6e; box-shadow: 0 20px 52px rgba(14,124,110,.18); }
-  .fc-blue:hover  { border-color:#1565c0; box-shadow: 0 20px 52px rgba(21,101,192,.18); }
-  .fc-green:hover { border-color:#2e7d32; box-shadow: 0 20px 52px rgba(46,125,50,.18); }
-  .fc-violet:hover{ border-color:#6d28d9; box-shadow: 0 20px 52px rgba(109,40,217,.18); }
+    @keyframes heroGrad {
 
-  /* Color variables */
-  .fc-gold   { --fc-color:#f0a500; --fc-light:#fffbee; }
-  .fc-teal   { --fc-color:#0e7c6e; --fc-light:#e6f6f4; }
-  .fc-blue   { --fc-color:#1565c0; --fc-light:#e7f0fd; }
-  .fc-green  { --fc-color:#2e7d32; --fc-light:#ecf7ed; }
-  .fc-violet { --fc-color:#6d28d9; --fc-light:#f3ebff; }
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
 
-  .fc-gold::before   { background: #f0a500; }
-  .fc-teal::before   { background: #0e7c6e; }
-  .fc-blue::before   { background: #1565c0; }
-  .fc-green::before  { background: #2e7d32; }
-  .fc-violet::before { background: #6d28d9; }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
 
-  /* Card Icon */
-  .fcard-icon {
-    width: 66px; height: 66px; border-radius: 18px;
-    background: var(--fc-light);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; margin-bottom: 20px;
-    position: relative; z-index: 1;
-    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  }
-  .fcard:hover .fcard-icon { transform: scale(1.12) rotate(-6deg); }
+    /* hero grid texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
 
-  .fcard-title {
-    font-size: 21px; font-weight: 800;
-    color: var(--text-dark); margin-bottom: 10px;
-    position: relative; z-index: 1;
-  }
-  .fcard-desc {
-    font-size: 13.5px; color: var(--text-muted);
-    line-height: 1.8; position: relative; z-index: 1;
-  }
+    /* floating orbs inside hero */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(70px);
+    }
 
-  /* Arrow CTA */
-  .fcard-cta {
-    position: absolute; bottom: 20px; left: 24px;
-    display: flex; align-items: center; gap: 6px;
-    font-size: 13px; font-weight: 700;
-    color: var(--fc-color);
-    opacity: 0; transform: translateY(8px);
-    transition: opacity 0.25s, transform 0.25s;
-  }
-  .fcard:hover .fcard-cta { opacity: 1; transform: translateY(0); }
+    .ho1 {
+      width: 450px;
+      height: 450px;
+      background: rgba(66, 165, 245, 0.12);
+      top: -140px;
+      right: -140px;
+      animation: orbDrift 14s ease-in-out infinite;
+    }
 
-  /* ========== NAV USER — clickable ========== */
-  .nav-user {
-    cursor: pointer;
-    padding: 6px 10px; border-radius: 12px;
-    transition: background 0.2s;
-  }
-  .nav-user:hover { background: rgba(255,255,255,0.1); }
+    .ho2 {
+      width: 350px;
+      height: 350px;
+      background: rgba(67, 160, 71, 0.12);
+      bottom: -100px;
+      left: -100px;
+      animation: orbDrift 18s ease-in-out infinite reverse;
+    }
 
-  /* ========== PROFILE MODAL ========== */
-  .profile-overlay {
-    position: fixed; inset: 0; z-index: 500;
-    background: rgba(6,21,64,0.55);
-    backdrop-filter: blur(6px);
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s;
-  }
-  .profile-overlay.open { opacity: 1; pointer-events: all; }
+    .ho3 {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 213, 79, 0.1);
+      top: 30%;
+      left: 15%;
+      animation: orbDrift 10s ease-in-out infinite;
+    }
 
-  .profile-panel {
-    position: fixed; top: 0; left: 0;
-    width: 340px; max-width: 92vw; height: 100vh;
-    background: linear-gradient(160deg, #0a1e50 0%, #0d3060 40%, #0a2e18 100%);
-    box-shadow: -6px 0 60px rgba(0,0,0,0.5);
-    border-right: 1px solid rgba(255,255,255,0.1);
-    z-index: 501;
-    transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-    display: flex; flex-direction: column;
-    overflow: hidden;
-  }
-  .profile-overlay.open .profile-panel { transform: translateX(0); }
+    @keyframes orbDrift {
 
-  /* top decoration strip */
-  .pp-strip {
-    height: 6px;
-    background: linear-gradient(90deg, var(--gold), var(--blue-400), var(--gold));
-    background-size: 200% auto;
-    animation: stripMove 3s linear infinite;
-  }
-  @keyframes stripMove { to { background-position: 200% center; } }
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
 
-  .pp-header {
-    padding: 32px 28px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .pp-header-title { color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
-  .pp-close {
-    width: 32px; height: 32px; border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    border: none; color: rgba(255,255,255,0.6);
-    font-size: 18px; cursor: pointer; font-family: var(--font);
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, color 0.2s;
-  }
-  .pp-close:hover { background: rgba(255,82,82,0.2); color: #ff8a80; }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+      }
+    }
 
-  .pp-avatar-zone {
-    padding: 32px 28px 24px;
-    display: flex; flex-direction: column; align-items: center; gap: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  .pp-avatar {
-    width: 88px; height: 88px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-400), var(--blue-400));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 36px; font-weight: 800; color: var(--white);
-    border: 3px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 0 6px rgba(66,160,71,0.18), 0 10px 32px rgba(0,0,0,0.3);
-    animation: ppAvatarPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
-  }
-  @keyframes ppAvatarPop { from{transform:scale(0.6);opacity:0;} to{transform:scale(1);opacity:1;} }
+    .hero-badge {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 213, 79, 0.13);
+      border: 1px solid rgba(255, 213, 79, 0.36);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 7px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s ease both;
+    }
 
-  .pp-name  { color: var(--white); font-size: 20px; font-weight: 800; text-align: center; }
-  .pp-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(255,213,79,0.14);
-    border: 1px solid rgba(255,213,79,0.3);
-    color: var(--gold); border-radius: 50px;
-    padding: 4px 14px; font-size: 12px; font-weight: 600;
-  }
+    .hero-title {
+      position: relative;
+      z-index: 2;
+      font-size: 58px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      text-shadow: 0 4px 28px rgba(0, 0, 0, 0.3);
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
 
-  .pp-body {
-    flex: 1; padding: 24px 28px; overflow-y: auto;
-    display: flex; flex-direction: column; gap: 14px;
-  }
+    .hero-title .shine {
+      background: linear-gradient(90deg, var(--gold), #fffde7, var(--gold));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shine 4s linear infinite, textPop 0.8s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      display: inline-block;
+    }
 
-  .pp-field {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 14px; padding: 14px 18px;
-    display: flex; align-items: center; gap: 14px;
-    transition: background 0.2s;
-  }
-  .pp-field:hover { background: rgba(255,255,255,0.09); }
-  .pp-field-icon {
-    width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
-    background: rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-  .pp-field-body { flex: 1; }
-  .pp-field-label { color: rgba(255,255,255,0.35); font-size: 11px; font-weight: 600; letter-spacing: 0.3px; }
-  .pp-field-value { color: var(--white); font-size: 14px; font-weight: 600; margin-top: 2px; word-break: break-all; }
+    @keyframes shine {
+      to {
+        background-position: -200% center;
+      }
+    }
 
-  .pp-logout {
-    margin: 0 28px 28px;
-    padding: 13px;
-    background: rgba(255,82,82,0.1);
-    border: 1.5px solid rgba(255,82,82,0.25);
-    border-radius: 14px;
-    color: #ff8a80; font-family: var(--font); font-size: 14px; font-weight: 700;
-    cursor: pointer; transition: background 0.2s, transform 0.2s;
-    width: calc(100% - 56px);
-  }
-  .pp-logout:hover { background: rgba(255,82,82,0.2); transform: translateY(-1px); }
+    /* letter-by-letter wave float */
+    .shine .letter {
+      display: inline-block;
+      color: #ffffff;
+      -webkit-text-fill-color: #ffffff;
+      animation: letterWave 0.6s ease both, letterFloat 3s ease-in-out infinite;
+      animation-duration: 0.6s, 3s;
+      text-shadow:
+        0 0 30px rgba(255, 213, 79, 0.9),
+        0 0 60px rgba(255, 213, 79, 0.5),
+        0 2px 8px rgba(0, 0, 0, 0.4);
+    }
 
-  /* ========== FOOTER ========== */
-  .footer {
-    background: linear-gradient(90deg, var(--blue-900), #0a2e14);
-    padding: 28px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-copy { color: rgba(255,255,255,0.35); font-size: 12px; }
-  .footer-links { display: flex; gap: 20px; }
-  .footer-link {
-    color: rgba(255,255,255,0.35); font-size: 12px;
-    cursor: pointer; transition: color 0.2s;
-  }
-  .footer-link:hover { color: rgba(255,255,255,0.7); }
+    @keyframes letterWave {
+      from {
+        opacity: 0;
+        transform: translateY(32px) scale(0.6);
+      }
 
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 900px) {
-    .cards-row-top    { grid-template-columns: 1fr 1fr; }
-    .cards-row-bottom { grid-template-columns: 1fr; max-width: 100%; }
-    .hero-title       { font-size: 38px; }
-    .nav-links        { display: none; }
-  }
-  @media (max-width: 560px) {
-    .cards-row-top    { grid-template-columns: 1fr; }
-    .hero-title       { font-size: 30px; }
-    .hero             { padding: 60px 20px 90px; }
-    .section          { padding: 44px 18px 60px; }
-  }
-</style>
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes letterFloat {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    @keyframes textPop {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero-sub {
+      position: relative;
+      z-index: 2;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.68);
+      max-width: 600px;
+      margin: 0 auto 0;
+      line-height: 1.8;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== WAVE DIVIDER ========== */
+    .wave-divider {
+      margin-top: -2px;
+      line-height: 0;
+      background: var(--off-white);
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ========== SECTION ========== */
+    .section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 64px 36px 80px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 52px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .section-head h2 {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--blue-900);
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      font-size: 16px;
+      color: var(--text-muted);
+    }
+
+    /* ========== CARDS GRID (5 cards) ========== */
+    /* Top row: 3 cards | Bottom row: 2 cards centered */
+    .cards-row-top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .cards-row-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 792px;
+      /* matches 2 of the 3 columns above */
+      margin: 0 auto;
+    }
+
+    /* ========== FEATURE CARD ========== */
+    .fcard {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 36px 30px 52px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      box-shadow: 0 6px 28px rgba(13, 45, 138, 0.07);
+      transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+        border-color 0.25s,
+        box-shadow 0.25s;
+      animation: cardIn 0.6s ease both;
+    }
+
+    .fcard:nth-child(1) {
+      animation-delay: .10s
+    }
+
+    .fcard:nth-child(2) {
+      animation-delay: .18s
+    }
+
+    .fcard:nth-child(3) {
+      animation-delay: .26s
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .cards-row-bottom .fcard:nth-child(1) {
+      animation-delay: .34s
+    }
+
+    .cards-row-bottom .fcard:nth-child(2) {
+      animation-delay: .42s
+    }
+
+    /* Glowing corner blob */
+    .fcard::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 190px;
+      height: 190px;
+      border-radius: 0 0 0 190px;
+      background: var(--fc-color, #1565c0);
+      opacity: .055;
+      transition: opacity .3s, transform .3s;
+    }
+
+    .fcard:hover {
+      transform: translateY(-10px);
+    }
+
+    .fcard:hover::before {
+      opacity: .12;
+      transform: scale(1.1);
+    }
+
+    /* border glow on hover per color */
+    .fc-gold:hover {
+      border-color: #f0a500;
+      box-shadow: 0 20px 52px rgba(240, 165, 0, .18);
+    }
+
+    .fc-teal:hover {
+      border-color: #0e7c6e;
+      box-shadow: 0 20px 52px rgba(14, 124, 110, .18);
+    }
+
+    .fc-blue:hover {
+      border-color: #1565c0;
+      box-shadow: 0 20px 52px rgba(21, 101, 192, .18);
+    }
+
+    .fc-green:hover {
+      border-color: #2e7d32;
+      box-shadow: 0 20px 52px rgba(46, 125, 50, .18);
+    }
+
+    .fc-violet:hover {
+      border-color: #6d28d9;
+      box-shadow: 0 20px 52px rgba(109, 40, 217, .18);
+    }
+
+    /* Color variables */
+    .fc-gold {
+      --fc-color: #f0a500;
+      --fc-light: #fffbee;
+    }
+
+    .fc-teal {
+      --fc-color: #0e7c6e;
+      --fc-light: #e6f6f4;
+    }
+
+    .fc-blue {
+      --fc-color: #1565c0;
+      --fc-light: #e7f0fd;
+    }
+
+    .fc-green {
+      --fc-color: #2e7d32;
+      --fc-light: #ecf7ed;
+    }
+
+    .fc-violet {
+      --fc-color: #6d28d9;
+      --fc-light: #f3ebff;
+    }
+
+    .fc-gold::before {
+      background: #f0a500;
+    }
+
+    .fc-teal::before {
+      background: #0e7c6e;
+    }
+
+    .fc-blue::before {
+      background: #1565c0;
+    }
+
+    .fc-green::before {
+      background: #2e7d32;
+    }
+
+    .fc-violet::before {
+      background: #6d28d9;
+    }
+
+    /* Card Icon */
+    .fcard-icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 18px;
+      background: var(--fc-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .fcard:hover .fcard-icon {
+      transform: scale(1.12) rotate(-6deg);
+    }
+
+    .fcard-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .fcard-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Arrow CTA */
+    .fcard-cta {
+      position: absolute;
+      bottom: 20px;
+      left: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--fc-color);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .fcard:hover .fcard-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== NAV USER — clickable ========== */
+    .nav-user {
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+
+    .nav-user:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ========== PROFILE MODAL ========== */
+    .profile-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(6, 21, 64, 0.55);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .profile-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .profile-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 340px;
+      max-width: 92vw;
+      height: 100vh;
+      background: linear-gradient(160deg, #0a1e50 0%, #0d3060 40%, #0a2e18 100%);
+      box-shadow: -6px 0 60px rgba(0, 0, 0, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 501;
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .profile-overlay.open .profile-panel {
+      transform: translateX(0);
+    }
+
+    /* top decoration strip */
+    .pp-strip {
+      height: 6px;
+      background: linear-gradient(90deg, var(--gold), var(--blue-400), var(--gold));
+      background-size: 200% auto;
+      animation: stripMove 3s linear infinite;
+    }
+
+    @keyframes stripMove {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    .pp-header {
+      padding: 32px 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pp-header-title {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .pp-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 18px;
+      cursor: pointer;
+      font-family: var(--font);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .pp-close:hover {
+      background: rgba(255, 82, 82, 0.2);
+      color: #ff8a80;
+    }
+
+    .pp-avatar-zone {
+      padding: 32px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pp-avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-400), var(--blue-400));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--white);
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 0 6px rgba(66, 160, 71, 0.18), 0 10px 32px rgba(0, 0, 0, 0.3);
+      animation: ppAvatarPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+
+    @keyframes ppAvatarPop {
+      from {
+        transform: scale(0.6);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .pp-name {
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .pp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 213, 79, 0.14);
+      border: 1px solid rgba(255, 213, 79, 0.3);
+      color: var(--gold);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .pp-body {
+      flex: 1;
+      padding: 24px 28px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pp-field {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: background 0.2s;
+    }
+
+    .pp-field:hover {
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .pp-field-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .pp-field-body {
+      flex: 1;
+    }
+
+    .pp-field-label {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .pp-field-value {
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 2px;
+      word-break: break-all;
+    }
+
+    .pp-logout {
+      margin: 0 28px 28px;
+      padding: 13px;
+      background: rgba(255, 82, 82, 0.1);
+      border: 1.5px solid rgba(255, 82, 82, 0.25);
+      border-radius: 14px;
+      color: #ff8a80;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      width: calc(100% - 56px);
+    }
+
+    .pp-logout:hover {
+      background: rgba(255, 82, 82, 0.2);
+      transform: translateY(-1px);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: linear-gradient(90deg, var(--blue-900), #0a2e14);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 12px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .cards-row-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cards-row-bottom {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .hero-title {
+        font-size: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .cards-row-top {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 30px;
+      }
+
+      .hero {
+        padding: 60px 20px 90px;
+      }
+
+      .section {
+        padding: 44px 18px 60px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ========== NAVBAR ========== -->
-<nav class="navbar">
-  <a class="nav-brand" href="#">
-    <div class="nav-logo">🤖</div>
-    <div>
-      <div class="nav-title">المرشد الذكي</div>
-      <div class="nav-sub">جامعة الشرق الأوسط</div>
-    </div>
-  </a>
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <a class="nav-brand" href="#">
+      <div class="nav-logo">🤖</div>
+      <div>
+        <div class="nav-title">المرشد الذكي</div>
+        <div class="nav-sub">جامعة الشرق الأوسط</div>
+      </div>
+    </a>
 
-  <div class="nav-links">
-    <button class="nav-link active">الرئيسية</button>
-    <button class="nav-link" onclick="go('chat')">المرشد الذكي</button>
-    <button class="nav-link" onclick="go('tour')">جولة الجامعة</button>
-    <button class="nav-link" onclick="go('plan')">دليل الخطة</button>
-    <button class="nav-link" onclick="go('future')">مستقبلك</button>
-    <button class="nav-link" onclick="go('careers')">مسارات العمل</button>
-  </div>
-
-  <div class="nav-user" id="navUser" onclick="openProfile()" title="عرض ملفك الشخصي">
-    <div class="user-avatar" id="userAvatar">ط</div>
-    <span class="user-name" id="userName">طالب جديد</span>
-  </div>
-</nav>
-
-<!-- ========== PROFILE MODAL ========== -->
-<div class="profile-overlay" id="profileOverlay" onclick="handleOverlayClick(event)">
-  <div class="profile-panel" id="profilePanel">
-    <div class="pp-strip"></div>
-
-    <div class="pp-header">
-      <span class="pp-header-title">الملف الشخصي</span>
-      <button class="pp-close" onclick="closeProfile()">✕</button>
+    <div class="nav-links">
+      <button class="nav-link active">الرئيسية</button>
+      <button class="nav-link" onclick="go('chat')">المرشد الذكي</button>
+      <button class="nav-link" onclick="go('tour')">جولة الجامعة</button>
+      <button class="nav-link" onclick="go('plan')">دليل الخطة</button>
+      <button class="nav-link" onclick="go('future')">مستقبلك</button>
+      <button class="nav-link" onclick="go('careers')">مسارات العمل</button>
+      <button class="nav-link nav-link-team" onclick="go('team')">✨ فريق الإعداد</button>
     </div>
 
-    <div class="pp-avatar-zone">
-      <div class="pp-avatar" id="ppAvatar">ط</div>
-      <p class="pp-name" id="ppName">طالب جديد</p>
-      <span class="pp-badge">🎓 طالب — تكنولوجيا التعليم</span>
+    <div class="nav-user" id="navUser" onclick="openProfile()" title="عرض ملفك الشخصي">
+      <div class="user-avatar" id="userAvatar">ط</div>
+      <span class="user-name" id="userName">طالب جديد</span>
     </div>
+  </nav>
 
-    <div class="pp-body">
-      <div class="pp-field">
-        <div class="pp-field-icon">🪪</div>
-        <div class="pp-field-body">
-          <p class="pp-field-label">الرقم الجامعي</p>
-          <p class="pp-field-value" id="ppSid">—</p>
+  <!-- ========== PROFILE MODAL ========== -->
+  <div class="profile-overlay" id="profileOverlay" onclick="handleOverlayClick(event)">
+    <div class="profile-panel" id="profilePanel">
+      <div class="pp-strip"></div>
+
+      <div class="pp-header">
+        <span class="pp-header-title">الملف الشخصي</span>
+        <button class="pp-close" onclick="closeProfile()">✕</button>
+      </div>
+
+      <div class="pp-avatar-zone">
+        <div class="pp-avatar" id="ppAvatar">ط</div>
+        <p class="pp-name" id="ppName">طالب جديد</p>
+        <span class="pp-badge">🎓 طالب — تكنولوجيا التعليم</span>
+      </div>
+
+      <div class="pp-body">
+        <div class="pp-field">
+          <div class="pp-field-icon">🪪</div>
+          <div class="pp-field-body">
+            <p class="pp-field-label">الرقم الجامعي</p>
+            <p class="pp-field-value" id="ppSid">—</p>
+          </div>
+        </div>
+        <div class="pp-field">
+          <div class="pp-field-icon">📧</div>
+          <div class="pp-field-body">
+            <p class="pp-field-label">البريد الإلكتروني الجامعي</p>
+            <p class="pp-field-value" id="ppEmail">—</p>
+          </div>
+        </div>
+        <div class="pp-field">
+          <div class="pp-field-icon">📱</div>
+          <div class="pp-field-body">
+            <p class="pp-field-label">رقم الهاتف</p>
+            <p class="pp-field-value" id="ppPhone">—</p>
+          </div>
+        </div>
+        <div class="pp-field" id="ppGuestNote" style="display:none;">
+          <div class="pp-field-icon">ℹ️</div>
+          <div class="pp-field-body">
+            <p class="pp-field-label">وضع الزيارة</p>
+            <p class="pp-field-value" style="font-size:12px;color:rgba(255,255,255,0.5);">أنت تتصفح كزائر. <a
+                href="register.html" style="color:#42a5f5;">أنشئ حساباً</a> لتسجيل بياناتك.</p>
+          </div>
         </div>
       </div>
-      <div class="pp-field">
-        <div class="pp-field-icon">📧</div>
-        <div class="pp-field-body">
-          <p class="pp-field-label">البريد الإلكتروني الجامعي</p>
-          <p class="pp-field-value" id="ppEmail">—</p>
-        </div>
+
+      <button class="pp-logout" onclick="logout()">🚪 &nbsp; تسجيل الخروج</button>
+    </div>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-orb ho1"></div>
+    <div class="hero-orb ho2"></div>
+    <div class="hero-orb ho3"></div>
+
+    <div class="hero-badge">🎓 جامعة الشرق الأوسط — تكنولوجيا التعليم</div>
+
+    <h1 class="hero-title">
+      <span id="heroGreet">مرحباً بك في</span><br>
+      <span class="shine" id="shine-text">المرشد الذكي</span>
+    </h1>
+
+    <p class="hero-sub">
+      دليلك الشامل لاستكشاف مسارك الأكاديمي والمهني في تخصص تكنولوجيا التعليم.<br>
+      كل ما تحتاجه في مكان واحد.
+    </p>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#f0f6ff" />
+    </svg>
+  </div>
+
+  <!-- ========== CARDS SECTION ========== -->
+  <section class="section">
+    <div class="section-head">
+      <h2>كيف يمكنني مساعدتك اليوم؟</h2>
+      <p>اختر الخدمة المطلوبة واستكشف مسارك الأكاديمي والمهني بأفضل شكل</p>
+    </div>
+
+    <!-- Row 1: 3 cards -->
+    <div class="cards-row-top">
+
+      <!-- 1. المرشد الذكي -->
+      <div class="fcard fc-gold" onclick="go('chat')">
+        <div class="fcard-icon">🤖</div>
+        <h3 class="fcard-title">المرشد الذكي</h3>
+        <p class="fcard-desc">
+          تحدث مع مساعدنا الذكي واحصل على إجابات فورية لجميع استفساراتك حول التخصص والجامعة والحياة الأكاديمية.
+        </p>
+        <div class="fcard-cta">ابدأ المحادثة <span>←</span></div>
       </div>
-      <div class="pp-field">
-        <div class="pp-field-icon">📱</div>
-        <div class="pp-field-body">
-          <p class="pp-field-label">رقم الهاتف</p>
-          <p class="pp-field-value" id="ppPhone">—</p>
-        </div>
+
+      <!-- 2. جولة حول الجامعة -->
+      <div class="fcard fc-teal" onclick="go('tour')">
+        <div class="fcard-icon">🏛️</div>
+        <h3 class="fcard-title">جولة حول الجامعة</h3>
+        <p class="fcard-desc">
+          تعرّف على جامعة الشرق الأوسط من خلال جولة حول الجامعة شاملة — مرافق، أقسام، وكل ما يهمك معرفته كطالب جديد.
+        </p>
+        <div class="fcard-cta">ابدأ الجولة <span>←</span></div>
       </div>
-      <div class="pp-field" id="ppGuestNote" style="display:none;">
-        <div class="pp-field-icon">ℹ️</div>
-        <div class="pp-field-body">
-          <p class="pp-field-label">وضع الزيارة</p>
-          <p class="pp-field-value" style="font-size:12px;color:rgba(255,255,255,0.5);">أنت تتصفح كزائر. <a href="register.html" style="color:#42a5f5;">أنشئ حساباً</a> لتسجيل بياناتك.</p>
-        </div>
+
+      <!-- 3. دليل الخطة -->
+      <div class="fcard fc-blue" onclick="go('plan')">
+        <div class="fcard-icon">📘</div>
+        <h3 class="fcard-title">الخطة الأسترشادية</h3>
+        <p class="fcard-desc">
+          اكتشف خطتك الدراسية الكاملة في تخصص تكنولوجيا التعليم، المقررات والمتطلبات والمسار خطوة بخطوة.
+        </p>
+        <div class="fcard-cta">استعرض الخطة <span>←</span></div>
       </div>
+
     </div>
 
-    <button class="pp-logout" onclick="logout()">🚪 &nbsp; تسجيل الخروج</button>
-  </div>
-</div>
+    <!-- Row 2: 2 cards centered -->
+    <div class="cards-row-bottom">
 
-<!-- ========== HERO ========== -->
-<section class="hero">
-  <div class="hero-orb ho1"></div>
-  <div class="hero-orb ho2"></div>
-  <div class="hero-orb ho3"></div>
+      <!-- 4. مستقبلك -->
+      <div class="fcard fc-green" onclick="go('future')">
+        <div class="fcard-icon">🚀</div>
+        <h3 class="fcard-title">تعرف على تخصص تكنولوجيا التعليم</h3>
+        <p class="fcard-desc">
+          اكتشف سوق العمل والفرص المهنية بعد التخرج، وكيف تستثمر تدريبك العملي في السنة الأخيرة.
+        </p>
+        <div class="fcard-cta">استكشف المستقبل <span>←</span></div>
+      </div>
 
-  <div class="hero-badge">🎓 جامعة الشرق الأوسط — تكنولوجيا التعليم</div>
+      <!-- 5. مسارات العمل -->
+      <div class="fcard fc-violet" onclick="go('careers')">
+        <div class="fcard-icon">🗺️</div>
+        <h3 class="fcard-title">اكتشاف مسارات العمل المستقبلية</h3>
+        <p class="fcard-desc">
+          تعرّف على أبرز المسارات المهنية المتاحة لخريج تكنولوجيا التعليم محلياً وعالمياً مع خريطة مهنية تفاعلية.
+        </p>
+        <div class="fcard-cta">استكشف المسارات <span>←</span></div>
+      </div>
 
-  <h1 class="hero-title">
-    <span id="heroGreet">مرحباً بك في</span><br>
-    <span class="shine" id="shine-text">المرشد الذكي</span>
-  </h1>
-
-  <p class="hero-sub">
-    دليلك الشامل لاستكشاف مسارك الأكاديمي والمهني في تخصص تكنولوجيا التعليم.<br>
-    كل ما تحتاجه في مكان واحد.
-  </p>
-</section>
-
-<!-- WAVE -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z"
-          fill="#f0f6ff"/>
-  </svg>
-</div>
-
-<!-- ========== CARDS SECTION ========== -->
-<section class="section">
-  <div class="section-head">
-    <h2>كيف يمكنني مساعدتك اليوم؟</h2>
-    <p>اختر الخدمة المطلوبة واستكشف مسارك الأكاديمي والمهني بأفضل شكل</p>
-  </div>
-
-  <!-- Row 1: 3 cards -->
-  <div class="cards-row-top">
-
-    <!-- 1. المرشد الذكي -->
-    <div class="fcard fc-gold" onclick="go('chat')">
-      <div class="fcard-icon">🤖</div>
-      <h3 class="fcard-title">المرشد الذكي</h3>
-      <p class="fcard-desc">
-        تحدث مع مساعدنا الذكي واحصل على إجابات فورية لجميع استفساراتك حول التخصص والجامعة والحياة الأكاديمية.
-      </p>
-      <div class="fcard-cta">ابدأ المحادثة <span>←</span></div>
     </div>
+  </section>
 
-    <!-- 2. جولة حول الجامعة -->
-    <div class="fcard fc-teal" onclick="go('tour')">
-      <div class="fcard-icon">🏛️</div>
-      <h3 class="fcard-title">جولة حول الجامعة</h3>
-      <p class="fcard-desc">
-        تعرّف على جامعة الشرق الأوسط من خلال جولة مرئية شاملة — مرافق، أقسام، وكل ما يهمك معرفته كطالب جديد.
-      </p>
-      <div class="fcard-cta">ابدأ الجولة <span>←</span></div>
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <span class="footer-copy">🤖 المرشد الذكي &copy; 2024 — جامعة الشرق الأوسط</span>
+    <div class="footer-links">
+      <span class="footer-link">سياسة الخصوصية</span>
+      <span class="footer-link">الخطة الإرشادية</span>
+      <span class="footer-link">تواصل معنا</span>
     </div>
+  </footer>
 
-    <!-- 3. دليل الخطة -->
-    <div class="fcard fc-blue" onclick="go('plan')">
-      <div class="fcard-icon">📘</div>
-      <h3 class="fcard-title">دليل الخطة</h3>
-      <p class="fcard-desc">
-        اكتشف خطتك الدراسية الكاملة في تخصص تكنولوجيا التعليم، المقررات والمتطلبات والمسار خطوة بخطوة.
-      </p>
-      <div class="fcard-cta">استعرض الخطة <span>←</span></div>
-    </div>
-
-  </div>
-
-  <!-- Row 2: 2 cards centered -->
-  <div class="cards-row-bottom">
-
-    <!-- 4. مستقبلك -->
-    <div class="fcard fc-green" onclick="go('future')">
-      <div class="fcard-icon">🚀</div>
-      <h3 class="fcard-title">مستقبلك في تكنولوجيا التعليم</h3>
-      <p class="fcard-desc">
-        اكتشف سوق العمل والفرص المهنية بعد التخرج، وكيف تستثمر تدريبك العملي في السنة الأخيرة.
-      </p>
-      <div class="fcard-cta">استكشف المستقبل <span>←</span></div>
-    </div>
-
-    <!-- 5. مسارات العمل -->
-    <div class="fcard fc-violet" onclick="go('careers')">
-      <div class="fcard-icon">🗺️</div>
-      <h3 class="fcard-title">اكتشاف مسارات العمل المستقبلية</h3>
-      <p class="fcard-desc">
-        تعرّف على أبرز المسارات المهنية المتاحة لخريج تكنولوجيا التعليم محلياً وعالمياً مع خريطة مهنية تفاعلية.
-      </p>
-      <div class="fcard-cta">استكشف المسارات <span>←</span></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ========== FOOTER ========== -->
-<footer class="footer">
-  <span class="footer-copy">🤖 المرشد الذكي &copy; 2024 — جامعة الشرق الأوسط</span>
-  <div class="footer-links">
-    <span class="footer-link">سياسة الخصوصية</span>
-    <span class="footer-link">الخطة الإرشادية</span>
-    <span class="footer-link">تواصل معنا</span>
-  </div>
-</footer>
-
-<script>
-/* ===== NAVIGATION ===== */
-const pageMap = {
-  chat:    'chat.html',
-  tour:    'tour.html',
-  plan:    'plan.html',
-  future:  'future.html',
-  careers: 'careers.html',
-};
-function go(key) {
-  if (pageMap[key]) {
-    window.location.href = pageMap[key];
-  }
-}
-
-/* ===== LOAD STUDENT INFO FROM SESSION ===== */
-(function loadStudentInfo() {
-  const name    = sessionStorage.getItem('student_name');
-  const sid     = sessionStorage.getItem('student_id');
-  const email   = sessionStorage.getItem('student_email');
-  const phone   = sessionStorage.getItem('student_phone');
-  const logged  = sessionStorage.getItem('student_logged') === 'true';
-
-  if (logged && name) {
-    // --- Navbar ---
-    const firstName = name.split(' ')[0];
-    const initials  = name.split(' ').slice(0, 2).map(w => w[0]).join('');
-    document.getElementById('userName').textContent   = firstName;
-    document.getElementById('userAvatar').textContent = initials;
-
-    // --- Hero greeting ---
-    document.getElementById('heroGreet').textContent = `أهلاً ${firstName}،`;
-
-    // --- Profile panel ---
-    document.getElementById('ppName').textContent   = name;
-    document.getElementById('ppAvatar').textContent = initials;
-    document.getElementById('ppSid').textContent    = sid   || '—';
-    document.getElementById('ppEmail').textContent  = email || '—';
-    document.getElementById('ppPhone').textContent  = phone || '—';
-  } else {
-    // Guest: hide personal fields, show guest note
-    document.getElementById('ppGuestNote').style.display = 'flex';
-    document.getElementById('ppSid').closest('.pp-field').style.display   = 'none';
-    document.getElementById('ppEmail').closest('.pp-field').style.display = 'none';
-    document.getElementById('ppPhone').closest('.pp-field').style.display = 'none';
-  }
-})();
-
-/* ===== PROFILE MODAL ===== */
-function openProfile() {
-  document.getElementById('profileOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeProfile() {
-  document.getElementById('profileOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('profileOverlay')) closeProfile();
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
-
-function logout() {
-  sessionStorage.clear();
-  window.location.href = 'log_in.html';
-}
-
-/* ===== WORD WAVE on "المرشد الذكي" ===== */
-(function splitWords() {
-  const shine = document.getElementById('shine-text');
-  if (!shine) return;
-  const words = shine.textContent.trim().split(' ');
-  shine.textContent = '';
-  words.forEach((word, i) => {
-    const span = document.createElement('span');
-    span.className = 'letter';
-    span.textContent = word;
-    span.style.animationDelay = `${0.3 + i * 0.2}s, ${0.3 + i * 0.2 + 0.7}s`;
-    shine.appendChild(span);
-    if (i < words.length - 1) {
-      shine.appendChild(document.createTextNode(' '));
+  <script>
+    /* ===== NAVIGATION ===== */
+    const pageMap = {
+      chat: 'chat.html',
+      tour: 'tour.html',
+      plan: 'plan.html',
+      future: 'future.html',
+      careers: 'careers.html',
+      team: 'team.html',
+    };
+    function go(key) {
+      if (pageMap[key]) {
+        window.location.href = pageMap[key];
+      }
     }
-  });
-})();
 
-/* ===== CARD STAGGER on scroll ===== */
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.style.animationPlayState = 'running';
-  });
-}, { threshold: 0.1 });
+    /* ===== LOAD STUDENT INFO FROM SESSION ===== */
+    (function loadStudentInfo() {
+      const name = sessionStorage.getItem('student_name');
+      const sid = sessionStorage.getItem('student_id');
+      const email = sessionStorage.getItem('student_email');
+      const phone = sessionStorage.getItem('student_phone');
+      const logged = sessionStorage.getItem('student_logged') === 'true';
 
-document.querySelectorAll('.fcard').forEach(c => {
-  c.style.animationPlayState = 'paused';
-  cardObserver.observe(c);
-});
-</script>
+      if (logged && name) {
+        // --- Navbar ---
+        const firstName = name.split(' ')[0];
+        const initials = name.split(' ').slice(0, 2).map(w => w[0]).join('');
+        document.getElementById('userName').textContent = firstName;
+        document.getElementById('userAvatar').textContent = initials;
+
+        // --- Hero greeting ---
+        document.getElementById('heroGreet').textContent = `أهلاً ${firstName}،`;
+
+        // --- Profile panel ---
+        document.getElementById('ppName').textContent = name;
+        document.getElementById('ppAvatar').textContent = initials;
+        document.getElementById('ppSid').textContent = sid || '—';
+        document.getElementById('ppEmail').textContent = email || '—';
+        document.getElementById('ppPhone').textContent = phone || '—';
+      } else {
+        // Guest: hide personal fields, show guest note
+        document.getElementById('ppGuestNote').style.display = 'flex';
+        document.getElementById('ppSid').closest('.pp-field').style.display = 'none';
+        document.getElementById('ppEmail').closest('.pp-field').style.display = 'none';
+        document.getElementById('ppPhone').closest('.pp-field').style.display = 'none';
+      }
+    })();
+
+    /* ===== PROFILE MODAL ===== */
+    function openProfile() {
+      document.getElementById('profileOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProfile() {
+      document.getElementById('profileOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('profileOverlay')) closeProfile();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProfile(); });
+
+    function logout() {
+      sessionStorage.clear();
+      window.location.href = 'log_in.html';
+    }
+
+    /* ===== WORD WAVE on "المرشد الذكي" ===== */
+    (function splitWords() {
+      const shine = document.getElementById('shine-text');
+      if (!shine) return;
+      const words = shine.textContent.trim().split(' ');
+      shine.textContent = '';
+      words.forEach((word, i) => {
+        const span = document.createElement('span');
+        span.className = 'letter';
+        span.textContent = word;
+        span.style.animationDelay = `${0.3 + i * 0.2}s, ${0.3 + i * 0.2 + 0.7}s`;
+        shine.appendChild(span);
+        if (i < words.length - 1) {
+          shine.appendChild(document.createTextNode(' '));
+        }
+      });
+    })();
+
+    /* ===== CARD STAGGER on scroll ===== */
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.style.animationPlayState = 'running';
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fcard').forEach(c => {
+      c.style.animationPlayState = 'paused';
+      cardObserver.observe(c);
+    });
+  </script>
 </body>
+
 </html>
