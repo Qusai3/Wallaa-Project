@@ -95,7 +95,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             full_name TEXT NOT NULL,
             student_id TEXT UNIQUE NOT NULL,
-            birth_date TEXT NOT NULL,
+            password TEXT NOT NULL,
             university_email TEXT UNIQUE NOT NULL,
             phone TEXT NOT NULL,
             created_at TEXT NOT NULL
@@ -158,11 +158,11 @@ def register_student():
 
     full_name = data.get("full_name")
     student_id = data.get("student_id")
-    birth_date = data.get("birth_date")
+    password = data.get("password")
     university_email = data.get("university_email")
     phone = data.get("phone")
 
-    if not all([full_name, student_id, birth_date, university_email, phone]):
+    if not all([full_name, student_id, password, university_email, phone]):
         return jsonify({"error": "جميع الحقول مطلوبة"}), 400
 
     try:
@@ -171,12 +171,12 @@ def register_student():
 
         c.execute("""
             INSERT INTO students
-            (full_name, student_id, birth_date, university_email, phone, created_at)
+            (full_name, student_id, password, university_email, phone, created_at)
             VALUES (?, ?, ?, ?, ?, ?)
         """, (
             full_name,
             student_id,
-            birth_date,
+            password,
             university_email,
             phone,
             datetime.datetime.now().isoformat()
@@ -200,6 +200,32 @@ def register_student():
             "error": str(e)
         }), 500
 
+@app.route("/api/student/login", methods=["POST"])
+def login_student():
+    data = request.get_json()
+    student_id = data.get("student_id")
+    password = data.get("password")
+
+    if not student_id or not password:
+        return jsonify({"error": "الرجاء إدخال الرقم الجامعي وكلمة السر"}), 400
+
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    c.execute("SELECT id, full_name, university_email, phone FROM students WHERE student_id = ? AND password = ?", (student_id, password))
+    user = c.fetchone()
+    conn.close()
+
+    if user:
+        return jsonify({
+            "success": True,
+            "student": {
+                "name": user[1],
+                "email": user[2],
+                "phone": user[3]
+            }
+        })
+    else:
+        return jsonify({"error": "الرقم الجامعي أو كلمة السر غير صحيحة"}), 401
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
