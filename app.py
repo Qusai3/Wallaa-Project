@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 import requests
 
 # ─── ENV & CONFIG ───────────────────────────────────────────────
-load_dotenv()
+load_dotenv(override=False)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 MODEL_NAME = "openai/gpt-3.5-turbo"
