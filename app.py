@@ -43,13 +43,15 @@ SYSTEM_PROMPT = """أنت "المرشد الذكي"، مساعد ذكي متخص
 
 # ─── OPENROUTER ────────────────────────────────────────────────
 def ask_openrouter(messages):
-    api_key = os.getenv("OPENROUTER_API_KEY")
+    api_key = os.environ.get("OPENROUTER_API_KEY")
     
     url = "https://openrouter.ai/api/v1/chat/completions"
 
     headers = {
         "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://wallaa-project.onrender.com", 
+        "X-Title": "Murshid Bot" 
     }
 
     data = {
@@ -239,7 +241,8 @@ def chat():
     if not user_msg:
         return jsonify({"error": "الرسالة فارغة"}), 400
 
-    if not OPENROUTER_API_KEY:
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    if not api_key:
         return jsonify({"error": "OpenRouter API غير مضبوط"}), 503
 
     ensure_session(session_id, user_name)
