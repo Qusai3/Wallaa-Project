@@ -43,10 +43,12 @@ SYSTEM_PROMPT = """أنت "المرشد الذكي"، مساعد ذكي متخص
 
 # ─── OPENROUTER ────────────────────────────────────────────────
 def ask_openrouter(messages):
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    
     url = "https://openrouter.ai/api/v1/chat/completions"
 
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json"
     }
 
