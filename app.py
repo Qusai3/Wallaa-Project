@@ -11,7 +11,7 @@ import requests
 load_dotenv(override=False)
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-MODEL_NAME = "mistralai/mistral-7b-instruct:free"
+MODEL_NAME ="openai/gpt-oss-20b:free"
 import tempfile
 # بدل os.getcwd()
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "murshid.db")
